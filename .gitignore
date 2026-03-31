@@ -5,5 +5,4 @@ frontend/dist/*
 !frontend/dist/index.html
 !frontend/dist/assets/
 !frontend/dist/assets/**
-build/
 .browser-profile/
