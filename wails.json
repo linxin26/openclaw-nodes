@@ -1,0 +1,11 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "openclaw-node",
+  "outputfilename": "openclaw-node",
+  "frontend:install": "npm install",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "wailsjsdir": "./frontend/wailsjs",
+  "version": "2",
+  "outputType": "desktop"
+}

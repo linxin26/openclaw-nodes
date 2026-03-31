@@ -1,0 +1,16 @@
+# golangci-lint configuration
+# Note: golangci-lint v1.48.0 is installed at ~/go/bin/golangci-lint.exe
+# due to Go 1.20 compatibility issues with newer versions.
+# golangci-lint has issues with govet/staticcheck on Go 1.20.7 (netip bug).
+# Run: ~/go/bin/golangci-lint.exe run --no-config --disable-all -E errcheck ./...
+
+run:
+  timeout: 5m
+  tests: true
+
+linters:
+  enable:
+    - errcheck
+
+issues:
+  exclude-use-default: false

@@ -1,0 +1,6 @@
+.worktrees/
+frontend/node_modules/
+frontend/dist/*
+!frontend/dist/index.html
+build/
+.browser-profile/

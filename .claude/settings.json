@@ -1,0 +1,23 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -c \"import sys,json,subprocess; d=json.load(sys.stdin); f=d.get('tool_input',{}).get('file_path') or d.get('tool_response',{}).get('filePath',''); [subprocess.run(['go','fmt',f],capture_output=True) for f in [f] if f.endswith('.go') and 'openclaw-node' in f]\" 2>/dev/null || true",
+            "timeout": 30,
+            "statusMessage": "Running go fmt..."
+          },
+          {
+            "type": "command",
+            "command": "python -c \"import sys,json,subprocess,os,pathlib; d=json.load(sys.stdin); f=d.get('tool_input',{}).get('file_path') or d.get('tool_response',{}).get('filePath',''); p=pathlib.Path(f).parts if f.endswith('.go') and 'openclaw-node' in f else None; [subprocess.run([os.path.expandvars('$HOME/go/bin/golangci-lint.exe'),'run','--no-config','--disable-all','-E','errcheck','./'+'/'.join(p[i:i+2])],capture_output=True,cwd='D:/code/project/openclaw-node') for i in range(len(p)-1) if p[i]=='internal'] if p else None\" 2>/dev/null || true",
+            "timeout": 60,
+            "statusMessage": "Running golangci-lint..."
+          }
+        ]
+      }
+    ]
+  }
+}
